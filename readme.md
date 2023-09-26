@@ -1,1 +1,1 @@
-  Spaghetti i koodsovs
+  Spaghetti
