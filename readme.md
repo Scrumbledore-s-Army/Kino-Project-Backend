@@ -1,5 +1,3 @@
-[![Build and deploy JAR app to Azure Web App - dat3week2Simon](https://github.com/simonj1704/CarsRUs/actions/workflows/main_dat3week2simon.yml/badge.svg)](https://github.com/simonj1704/CarsRUs/actions/workflows/main_dat3week2simon.yml)
-
 FrontEnd link: https://scrumbledore-s-army.github.io/Kino-Project-Frontend-app/
 FrontEnd github: https://github.com/Scrumbledore-s-Army/Kino-Project-Frontend-app.git
 
@@ -8,9 +6,9 @@ BackEnd github: https://github.com/Scrumbledore-s-Army/Kino-Project-Backend.git
 
 
 
-## Group Contract
+## Gruppekontrakt - Kino XP
 
-  ****The names of all members****
+  ****Navnene på alle gruppemedlemmer:****
   ___
 
 -   Mikkel Højhus Nielsen
@@ -28,15 +26,15 @@ BackEnd github: https://github.com/Scrumbledore-s-Army/Kino-Project-Backend.git
 ___
   ---
 
-**Days and times when you plan to meet**
+**Dag og tidspunkt vi mødes samt lokalebookning:**
 ___
 Vi mødes som udgangspunkt klokken 8:30. Klokken 8:45 holder vi daily scrum og klokken 9:00 er vi i gang med at arbejde
 
   
 
-**Location Schedule:**
+**Lokale Skema**
 ___
-| Location | Tidspunkt (for lokale) |
+| Lokation | Tidspunkt (for bookning) |
 |--|--|
 | GBG: E456 - Studielokale | 02/10/23 - 08:00-15:00 |
 | GBG: E356 - Studielokale | 03/10/23 - 08:00-15:00 |
@@ -50,16 +48,16 @@ ___
 | GBG: E456 - Studielokale | 13/10/23 - 08:00-15:00 |
 
 
-**Meeting discipline**
+**Mødedisciplin:**
 ___
 
-**How to contact the rest of the group if, for some reason, you are prevented from attending on an agreed day**
+**Hvordan kontakter vi et gruppemedlem såfremt vedkommende ikke er dukket op til en aftalt dato:**
 
 Hvis en person ikke er mødt op, kommunikerer vi over Team eller evt. Messenger.
 
   
 
-**How to react as a group, if a member is repeatedly absent without announcing it to the group with an acceptable reason**
+**Hvilken reaktion har gruppen hvis et medlem gentagende gange ikke møder op uden grundlag:**
 
 Hvis et gruppemedlem gentagne ikke møder op uden at kommunikere hvorfor, tager resten af gruppen fat i personen og beder om en forklaring.
 
@@ -68,7 +66,7 @@ Såfremt et gruppemedlem ikke afgiver en forklaring, fortsætter resten af grupp
   
   
 
-**Your selected branching strategy**
+**Vores Branching Strategi:**
 ___
 
 Vi bruger Git og Github som version control. Det er her vi lægger vores kode.
