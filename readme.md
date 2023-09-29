@@ -1,5 +1,13 @@
 [![Build and deploy JAR app to Azure Web App - dat3week2Simon](https://github.com/simonj1704/CarsRUs/actions/workflows/main_dat3week2simon.yml/badge.svg)](https://github.com/simonj1704/CarsRUs/actions/workflows/main_dat3week2simon.yml)
 
+FrontEnd link: https://scrumbledore-s-army.github.io/Kino-Project-Frontend-app/
+FrontEnd github: https://github.com/Scrumbledore-s-Army/Kino-Project-Frontend-app.git
+
+BackEnd link: kinoprojectscrumbledore.azurewebsites.net
+BackEnd github: https://github.com/Scrumbledore-s-Army/Kino-Project-Backend.git
+
+
+
 ## Group Contract
 
   ****The names of all members****
