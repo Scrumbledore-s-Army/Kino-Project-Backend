@@ -18,19 +18,19 @@ public class User extends UserWithRoles {
 
 
 
-    @Column(nullable = false, length = 50)
+    @Column(nullable = true, length = 50)
     private String firstName;
 
-    @Column(nullable = false, length = 50)
+    @Column(nullable = true, length = 50)
     private String lastName;
 
-    @Column(nullable = false, length = 50)
+    @Column(nullable = true, length = 50)
     private String street;
 
-    @Column(nullable = false, length = 50)
+    @Column(nullable = true, length = 50)
     private String city;
 
-    @Column(nullable = false, length = 10)
+    @Column(nullable = true, length = 10)
     private String zip;
 
 // Constructors

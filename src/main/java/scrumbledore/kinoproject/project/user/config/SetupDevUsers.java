@@ -57,6 +57,7 @@ public class SetupDevUsers implements ApplicationRunner {
         testuser.addRole(Role.USER);
         testadmin.addRole(Role.ADMIN);
         testspaghetti.addRole(Role.USER);
+        testspaghetti.addRole(Role.ADMIN);
 
         userRepository.save(testuser);
         userRepository.save(testadmin);
