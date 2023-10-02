@@ -5,8 +5,8 @@ import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
-import scrumbledore.kinoproject.project.user.entity.User;
 import scrumbledore.kinoproject.project.user.repository.UserRepository;
+import scrumbledore.kinoproject.project.user.entity.User;
 import scrumbledore.kinoproject.security.entity.Role;
 import scrumbledore.kinoproject.security.repository.UserWithRolesRepository;
 
