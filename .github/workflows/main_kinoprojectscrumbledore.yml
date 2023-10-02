@@ -25,6 +25,15 @@ jobs:
       - name: Build with Maven
         run: mvn clean install
 
+      - name: Notify on Failure
+        if: failure() # This step runs only on build failure
+        uses: Microsoft-Teams-Open-Source/github-action@v1
+        with:
+          webhook-url: ${{ secrets.MICROSOFT_TEAMS_WEBHOOK_URL }}
+          title: "Maven Build Failed"
+          summary: "Maven build failed in the repository: ${{ github.repository }} (${{ github.sha }})"
+          theme-color: 'FF0000' # Customize the card's color
+
       - name: Upload artifact for deployment job
         uses: actions/upload-artifact@v2
         with:
