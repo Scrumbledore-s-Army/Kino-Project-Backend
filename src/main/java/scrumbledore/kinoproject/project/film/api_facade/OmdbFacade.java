@@ -23,7 +23,7 @@ public class OmdbFacade {
 
     public FilmOmdbResponse getFilm(String imdbId) {
         String url = OMDB_URL+"/?apikey=" + API_KEY + "&plot=full" + "&i=";
-        FilmOmdbResponse movieDTO = restTemplate.getForObject(url+imdbId, FilmOmdbResponse.class);
-        return movieDTO;
+        FilmOmdbResponse filmDTO = restTemplate.getForObject(url+imdbId, FilmOmdbResponse.class);
+        return filmDTO;
     }
 }

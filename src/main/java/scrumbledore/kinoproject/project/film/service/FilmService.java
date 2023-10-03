@@ -29,7 +29,7 @@ public class FilmService {
     }
 
     public Film getFilmByImdbId(String imdbId) {
-        return filmRepository.findByImdbId(imdbId).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Movie not found"));
+        return filmRepository.findByImdbID(imdbId).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Movie not found"));
     }
 
 
