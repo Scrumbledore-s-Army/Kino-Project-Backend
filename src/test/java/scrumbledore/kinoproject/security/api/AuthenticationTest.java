@@ -24,7 +24,14 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 //You can enable/disable these tests in you maven builds via the maven-surefire-plugin, in your pom-file
 @Tag("DisabledSecurityTest")
-@SpringBootTest
+@SpringBootTest(
+        properties = {
+                "spring.datasource.url=jdbc:h2:mem:test",
+                "spring.datasource.driver-class-name=org.h2.Driver",
+                "spring.datasource.username=test",
+                "spring.datasource.password=test",
+        }
+)
 @AutoConfigureMockMvc
 @ActiveProfiles("test")  //Ensures that we use the in-memory database
 @Transactional
