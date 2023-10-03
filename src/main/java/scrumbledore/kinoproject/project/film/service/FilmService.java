@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
 import scrumbledore.kinoproject.project.film.api_facade.OmdbFacade;
 import scrumbledore.kinoproject.project.film.dto.FilmOmdbResponse;
+import scrumbledore.kinoproject.project.film.dto.FilmResponse;
 import scrumbledore.kinoproject.project.film.entity.Film;
 import scrumbledore.kinoproject.project.film.repository.FilmRepository;
 
@@ -26,6 +27,11 @@ public class FilmService {
 
     public FilmService(FilmRepository filmRepository) {
         this.filmRepository = filmRepository;
+    }
+    public FilmResponse getFilmById(int id){
+        Film film = filmRepository.findById(id)
+                .orElseThrow(()-> new ResponseStatusException(HttpStatus.BAD_REQUEST,"Film with this ID does not exist"));
+        return new FilmResponse(film);
     }
 
     public Film getFilmByImdbId(String imdbId) {

@@ -45,4 +45,8 @@ public class Film {
     private String website;
     private String response;
 
+    public Film(int id){
+        this.id = id;
+    }
+
 }
