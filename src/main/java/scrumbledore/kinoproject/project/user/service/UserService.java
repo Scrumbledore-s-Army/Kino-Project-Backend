@@ -56,11 +56,6 @@ public class UserService {
         user.setUsername(body.getUsername());
         user.setPassword(body.getPassword());
         user.setEmail(body.getEmail());
-        user.setFirstName(body.getFirstName());
-        user.setLastName(body.getLastName());
-        user.setStreet(body.getStreet());
-        user.setCity(body.getCity());
-        user.setZip(body.getZip());
         userRepository.save(user);
     }
 

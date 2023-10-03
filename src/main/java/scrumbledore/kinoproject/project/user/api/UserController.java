@@ -26,20 +26,10 @@ class UserController {
         return userService.getUsers();
     }
 
-    @GetMapping("/includeAll")
-    List<UserResponse> getUsersIncludeAll() {
-        return userService.getUsers();
-    }
-
 
     //Admin
     @GetMapping(path = "/{username}")
     UserResponse getUserById(@PathVariable String username) throws Exception {
-        return userService.findById(username);
-    }
-
-    @GetMapping(path = "/{username}/includeAll")
-    UserResponse getUserByIdIncludeAll(@PathVariable String username) throws Exception {
         return userService.findById(username);
     }
 
@@ -57,7 +47,7 @@ class UserController {
         userService.editUser(body, username);
     }
 
-    // Security --> Admin
+    // Security --> User
     @DeleteMapping("/{username}")
     void deleteUserByUsername(@PathVariable String username) {
         userService.deleteById(username);

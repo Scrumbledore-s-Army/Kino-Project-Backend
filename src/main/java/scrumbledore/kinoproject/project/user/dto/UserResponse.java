@@ -27,11 +27,6 @@ public class UserResponse {
     public UserResponse(User m) {
         this.username = m.getUsername();
         this.email = m.getEmail();
-        this.street = m.getStreet();
-        this.firstName = m.getFirstName();
-        this.lastName = m.getLastName();
-        this.city = m.getCity();
-        this.zip = m.getZip();
         this.created = m.getCreated();
         this.edited = m.getEdited();
     }
