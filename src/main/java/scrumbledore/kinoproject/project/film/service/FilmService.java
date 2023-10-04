@@ -14,6 +14,8 @@ import scrumbledore.kinoproject.project.film.dto.FilmResponse;
 import scrumbledore.kinoproject.project.film.entity.Film;
 import scrumbledore.kinoproject.project.film.repository.FilmRepository;
 
+import java.util.List;
+
 @Service
 public class FilmService {
 
@@ -32,6 +34,11 @@ public class FilmService {
         Film film = filmRepository.findById(id)
                 .orElseThrow(()-> new ResponseStatusException(HttpStatus.BAD_REQUEST,"Film with this ID does not exist"));
         return new FilmResponse(film);
+    }
+    public List<FilmResponse> getAllFilms(){
+        List<Film> films = filmRepository.findAll();
+        List<FilmResponse> filmResponses = films.stream().map(film -> new FilmResponse(film)).toList();
+        return filmResponses;
     }
 
     public Film getFilmByImdbId(String imdbId) {

@@ -24,6 +24,7 @@ public class FilmResponse {
     private String poster;
     private String metascore;
     private String imdbRating;
+    private boolean isOngoing;
 
     public FilmResponse(Film film) {
         this.id = film.getId();
@@ -40,5 +41,6 @@ public class FilmResponse {
         this.poster = film.getPoster();
         this.metascore = film.getMetascore();
         this.imdbRating = film.getImdbRating();
+        this.isOngoing = film.isOngoing();
     }
 }

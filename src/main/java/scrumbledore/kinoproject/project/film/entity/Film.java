@@ -44,6 +44,7 @@ public class Film {
     private String imdbID;
     private String website;
     private String response;
+    private boolean isOngoing;
 
     public Film(int id){
         this.id = id;
