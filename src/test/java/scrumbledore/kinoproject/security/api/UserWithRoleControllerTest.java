@@ -1,9 +1,7 @@
 package scrumbledore.kinoproject.security.api;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Tag;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -14,6 +12,7 @@ import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.MvcResult;
 import org.springframework.transaction.annotation.Transactional;
 import scrumbledore.kinoproject.security.TestUtils;
+import scrumbledore.kinoproject.security.api.UserWithRoleController;
 import scrumbledore.kinoproject.security.dto.LoginRequest;
 import scrumbledore.kinoproject.security.dto.LoginResponse;
 import scrumbledore.kinoproject.security.dto.UserWithRolesRequest;
@@ -50,6 +49,20 @@ class UserWithRoleControllerTest {
   private final ObjectMapper objectMapper = new ObjectMapper();
 
   private boolean dataInitialized = false;
+
+  @BeforeAll
+  public static void iniSetUp(){
+    System.setProperty(TestUtils.h2UrlName, TestUtils.h2UrlValue);
+    System.setProperty(TestUtils.h2UsernameName, TestUtils.h2UsernameValue);
+    System.setProperty(TestUtils.h2PassName, TestUtils.h2PassValue);
+  }
+
+  @AfterAll
+  public static void tearDown(){
+    System.clearProperty(TestUtils.h2UrlName);
+    System.clearProperty(TestUtils.h2UsernameName);
+    System.clearProperty(TestUtils.h2PassName);
+  }
 
   @BeforeEach
   void setUp() throws Exception {

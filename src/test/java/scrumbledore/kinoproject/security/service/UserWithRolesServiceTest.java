@@ -11,6 +11,7 @@ import scrumbledore.kinoproject.security.dto.UserWithRolesResponse;
 import scrumbledore.kinoproject.security.entity.Role;
 import scrumbledore.kinoproject.security.entity.UserWithRoles;
 import scrumbledore.kinoproject.security.repository.UserWithRolesRepository;
+import scrumbledore.kinoproject.security.service.UserWithRolesService;
 
 import static org.junit.jupiter.api.Assertions.*;
 

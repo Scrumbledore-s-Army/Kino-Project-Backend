@@ -35,10 +35,6 @@ public class FilmService {
                 .orElseThrow(()-> new ResponseStatusException(HttpStatus.BAD_REQUEST,"Film with this ID does not exist"));
         return new FilmResponse(film);
     }
-    public List<FilmResponse> getAllFilms(){
-        List<Film> films = filmRepository.findAll();
-        return films.stream().map(film -> new FilmResponse(film)).toList();
-    }
 
     public Film getFilmByImdbId(String imdbId) {
         return filmRepository.findByImdbID(imdbId).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Movie not found"));

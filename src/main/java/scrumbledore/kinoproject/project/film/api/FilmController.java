@@ -23,7 +23,11 @@ public class FilmController {
     }
     @GetMapping
     public List<FilmResponse> getAllFilms(){
-    return filmService.getAllFilms();
+        return filmService.getAllFilms();
+    }
+    @GetMapping("/{id}")
+    public FilmResponse getFilmById(@PathVariable int id){
+        return filmService.getFilmById(id);
     }
 
     @RequestMapping("/imdbid/{imdbId}")
