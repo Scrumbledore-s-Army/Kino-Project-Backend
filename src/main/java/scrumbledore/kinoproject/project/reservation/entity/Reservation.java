@@ -1,9 +1,7 @@
 package scrumbledore.kinoproject.project.reservation.entity;
 
 import jakarta.persistence.*;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 import scrumbledore.kinoproject.project.seat.entity.Seat;
 import scrumbledore.kinoproject.project.showing.entity.Showing;
 import scrumbledore.kinoproject.project.user.entity.User;
@@ -15,6 +13,8 @@ import java.util.concurrent.atomic.AtomicInteger;
 @Getter
 @Setter
 @NoArgsConstructor
+@AllArgsConstructor
+@Builder
 public class Reservation {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

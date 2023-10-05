@@ -19,6 +19,15 @@ private Integer totalPrice;
 private User customer;
 private Showing showing;
 
+    public static Reservation getReservationEntity(ReservationRequest reservationRequest) {
+        return new Reservation().builder()
+                .seats(reservationRequest.getSeats())
+                .totalPrice(reservationRequest.getTotalPrice())
+                .customer(reservationRequest.getCustomer())
+                .showing(reservationRequest.getShowing())
+                .build();
+    }
+
     public ReservationRequest(Reservation reservation) {
         this.seats = reservation.getSeats();
         this.totalPrice = reservation.getTotalPrice();
