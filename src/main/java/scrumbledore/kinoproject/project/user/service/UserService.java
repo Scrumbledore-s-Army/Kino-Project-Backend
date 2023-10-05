@@ -42,9 +42,8 @@ public class UserService {
         if (userRepository.existsById(body.getUsername())) {
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "This user already exists");
         }
-        newUser = userRepository.save(newUser);
-
         newUser.addRole(Role.USER);
+        newUser = userRepository.save(newUser);
         return new UserResponse(newUser);
     }
 
