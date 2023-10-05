@@ -13,11 +13,6 @@ public class UserRequest {
     String username;
     String email;
     String password;
-    String firstName;
-    String lastName;
-    String street;
-    String city;
-    String zip;
 
     public static User getUserEntity(UserRequest m) {
         return new User(m.username, m.getPassword(), m.getEmail());

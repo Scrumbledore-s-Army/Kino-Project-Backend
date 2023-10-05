@@ -16,11 +16,6 @@ public class UserResponse {
 
     String username;
     String email;
-    String firstName;
-    String lastName;
-    String street;
-    String city;
-    String zip;
     LocalDateTime created;
     LocalDateTime edited;
 
