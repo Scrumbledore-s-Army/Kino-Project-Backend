@@ -4,6 +4,9 @@ package scrumbledore.kinoproject.project.film.entity;
 
 import jakarta.persistence.*;
 import lombok.*;
+import scrumbledore.kinoproject.project.showing.entity.Showing;
+
+import java.util.List;
 
 
 @Getter
@@ -45,6 +48,9 @@ public class Film {
     private String website;
     private String response;
     private boolean isOngoing;
+
+    @OneToMany
+    private List<Showing> showings;
 
     public Film(int id){
         this.id = id;
