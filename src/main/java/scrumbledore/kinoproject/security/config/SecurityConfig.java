@@ -60,7 +60,7 @@ public class SecurityConfig {
                             )
                             .authenticationEntryPoint(new CustomOAuth2AuthenticationEntryPoint())
                             .accessDeniedHandler(new CustomOAuth2AccessDeniedHandler()));
-    
+    //ROFLMAO
     http.authorizeHttpRequests((authorize) -> authorize
             .requestMatchers(mvcMatcherBuilder.pattern(HttpMethod.POST, "/api/auth/login")).permitAll()
             .requestMatchers(mvcMatcherBuilder.pattern(HttpMethod.POST, "/api/user-with-role")).permitAll() //Clients can create a user for themself
