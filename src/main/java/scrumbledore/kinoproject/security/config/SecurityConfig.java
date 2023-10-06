@@ -60,7 +60,7 @@ public class SecurityConfig {
                             )
                             .authenticationEntryPoint(new CustomOAuth2AuthenticationEntryPoint())
                             .accessDeniedHandler(new CustomOAuth2AccessDeniedHandler()));
-    
+    //ROFLMFAO
     http.authorizeHttpRequests((authorize) -> authorize
             .requestMatchers(mvcMatcherBuilder.pattern(HttpMethod.POST, "/api/auth/login")).permitAll()
             .requestMatchers(mvcMatcherBuilder.pattern(HttpMethod.POST, "/api/user-with-role")).permitAll() //Clients can create a user for themself
@@ -74,6 +74,7 @@ public class SecurityConfig {
             .requestMatchers(mvcMatcherBuilder.pattern("/error")).permitAll()
             .requestMatchers(mvcMatcherBuilder.pattern(HttpMethod.POST,"/api/films/{imdbId}")).hasAuthority("ADMIN")
             .requestMatchers(mvcMatcherBuilder.pattern(HttpMethod.GET,"api/films")).permitAll()
+            .requestMatchers(mvcMatcherBuilder.pattern(HttpMethod.GET,"api/films/{id}")).permitAll()
 
             //This is for demo purposes only, and should be removed for a real system
             //.requestMatchers(mvcMatcherBuilder.pattern(HttpMethod.GET, "/api/test/user-only")).hasAuthority("USER")
@@ -85,7 +86,7 @@ public class SecurityConfig {
 
     return http.build();
   }
-
+//LOL
   @Bean
   public PasswordEncoder passwordEncoder() {
     return new BCryptPasswordEncoder();
