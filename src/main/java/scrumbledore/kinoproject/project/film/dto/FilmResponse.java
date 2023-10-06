@@ -3,6 +3,11 @@ package scrumbledore.kinoproject.project.film.dto;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import lombok.*;
 import scrumbledore.kinoproject.project.film.entity.Film;
+import scrumbledore.kinoproject.project.showing.entity.Showing;
+
+import java.util.ArrayList;
+import java.util.List;
+
 @Getter
 @Setter
 @NoArgsConstructor
@@ -25,8 +30,10 @@ public class FilmResponse {
     private String metascore;
     private String imdbRating;
     private boolean isOngoing;
+    private List<Showing> showings = new ArrayList<>();
 
     public FilmResponse(Film film) {
+        this.showings = film.getShowings();
         this.id = film.getId();
         this.title = film.getTitle();
         this.year = film.getYear();
