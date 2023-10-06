@@ -11,6 +11,12 @@ import scrumbledore.kinoproject.project.theater.enity.Theater;
 public class TheaterRequest {
     private Integer seatCount;
 
+    public static Theater getTheaterEntity(TheaterRequest theaterRequest) {
+        return new Theater().builder()
+                .seatCount(theaterRequest.getSeatCount())
+                .build();
+    }
+
     public TheaterRequest(Theater theater) {
         this.seatCount = theater.getSeatCount();
     }
