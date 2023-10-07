@@ -16,7 +16,7 @@ public class AddShowingRequest {
     private int filmId;
     private int theaterId;
     private Double ticketPrice;
-    @JsonFormat(pattern = "yyyy-MM-dd", shape = JsonFormat.Shape.STRING)
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", shape = JsonFormat.Shape.STRING)
     private LocalDateTime timeAndDate;
 
 //    public static Showing getShowingRequest(AddShowingRequest addShowingRequest){

@@ -21,7 +21,7 @@ public class ShowingRequest {
     private Film film;
     private List<Seat> seats;
     private Theater theater;
-    @JsonFormat(pattern = "yyyy-MM-dd", shape = JsonFormat.Shape.STRING)
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", shape = JsonFormat.Shape.STRING)
     private LocalDateTime timeAndDate;
     private Double ticketPrice;
     private List<Reservation> reservations;

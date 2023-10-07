@@ -13,6 +13,10 @@ public class ShowingController {
 
     ShowingService showingService;
 
+    public ShowingController(ShowingService showingService) {
+        this.showingService = showingService;
+    }
+
     @PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
     public ShowingResponse addShowing(@RequestBody AddShowingRequest body){
         return showingService.addShowing(body);

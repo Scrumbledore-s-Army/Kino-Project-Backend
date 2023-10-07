@@ -1,5 +1,6 @@
 package scrumbledore.kinoproject.project.showing.dto;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.*;
 import scrumbledore.kinoproject.project.film.entity.Film;
 import scrumbledore.kinoproject.project.reservation.entity.Reservation;

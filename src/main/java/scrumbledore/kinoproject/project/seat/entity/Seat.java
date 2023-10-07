@@ -21,4 +21,5 @@ public class Seat {
     private Integer seatNumber;
     @ManyToOne
     private Reservation reservation;
+    Integer showingIdOnShowing;
 }
