@@ -15,7 +15,6 @@ public class SeatRequest {
     private Integer seatNumber;
     private Reservation reservation;
     public SeatRequest(Seat seat) {
-        this.showing = seat.getShowing();
         this.seatNumber = seat.getSeatNumber();
         this.reservation = seat.getReservation();
     }

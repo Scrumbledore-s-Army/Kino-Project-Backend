@@ -1,10 +1,11 @@
 package scrumbledore.kinoproject.project.theater.enity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.*;
+import scrumbledore.kinoproject.project.showing.entity.Showing;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @Getter
 @Setter
@@ -17,4 +18,7 @@ public class Theater {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     private Integer seatCount;
+
+    @OneToMany
+    private List<Showing> showings;
 }
