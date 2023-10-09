@@ -24,11 +24,9 @@ public class ShowingRequest {
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", shape = JsonFormat.Shape.STRING)
     private LocalDateTime timeAndDate;
     private Double ticketPrice;
-    private List<Reservation> reservations;
 
     public static Showing getShowingEntity(ShowingRequest showingRequest){
         Showing showing = Showing.builder().ticketPrice(showingRequest.getTicketPrice())
-                .reservations(showingRequest.getReservations())
                 .timeAndDate(showingRequest.getTimeAndDate())
                 .theater(showingRequest.getTheater())
                 .film(showingRequest.getFilm())
@@ -42,6 +40,5 @@ public class ShowingRequest {
         this.theater = showing.getTheater();
         this.timeAndDate = showing.getTimeAndDate();
         this.ticketPrice = showing.getTicketPrice();
-        this.reservations = showing.getReservations();
     }
 }

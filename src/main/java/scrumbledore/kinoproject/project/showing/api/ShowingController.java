@@ -7,6 +7,8 @@ import scrumbledore.kinoproject.project.showing.dto.ShowingResponse;
 import scrumbledore.kinoproject.project.showing.entity.Showing;
 import scrumbledore.kinoproject.project.showing.service.ShowingService;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("api/showings")
 public class ShowingController {
@@ -22,6 +24,32 @@ public class ShowingController {
         return showingService.addShowing(body);
     }
 
+    @GetMapping()
+    public List<ShowingResponse> showingResponseList(){
+        return showingService.getAllShowings(false);
+    }
+
+
+    @GetMapping("/includeSeats")
+    public List<ShowingResponse> showingResponseListIncludeSeats(){
+        return showingService.getAllShowings(true);
+    }
+
+
+    @GetMapping("/{id}")
+    public ShowingResponse showingResponse(@PathVariable int id){
+        return showingService.getShowingById(id,false);
+    }
+
+    @GetMapping("/{id}/includeSeats")
+    public ShowingResponse showingResponseIncludeSeats(@PathVariable int id){
+        return showingService.getShowingById(id,true);
+    }
+
+    @GetMapping("findAllByFilmId/{filmId}")
+    public List<ShowingResponse> showingResponseListByFilmId(@PathVariable int filmId){
+        return showingService.getShowingsByFilm(filmId);
+    }
 
 
 

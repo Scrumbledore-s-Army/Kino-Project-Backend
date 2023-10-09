@@ -12,14 +12,15 @@ import scrumbledore.kinoproject.project.showing.entity.Showing;
 @Setter
 @NoArgsConstructor
 public class Seat {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
-    @ManyToOne
-    private Showing showing;
     private Integer seatNumber;
+
     @ManyToOne
     private Reservation reservation;
+
     Integer showingIdOnShowing;
 }

@@ -24,6 +24,7 @@ import org.springframework.security.oauth2.server.resource.authentication.JwtAut
 import org.springframework.security.oauth2.server.resource.authentication.JwtGrantedAuthoritiesConverter;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.servlet.util.matcher.MvcRequestMatcher;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.cors.CorsConfigurationSource;
 import org.springframework.web.servlet.handler.HandlerMappingIntrospector;
 import scrumbledore.kinoproject.security.error.CustomOAuth2AccessDeniedHandler;
@@ -73,9 +74,21 @@ public class SecurityConfig {
 
             .requestMatchers(mvcMatcherBuilder.pattern("/error")).permitAll()
             .requestMatchers(mvcMatcherBuilder.pattern(HttpMethod.POST,"/api/films/{imdbId}")).hasAuthority("ADMIN")
+
+            .requestMatchers(mvcMatcherBuilder.pattern(HttpMethod.GET,"/api/films/{imdbId}")).permitAll()
             .requestMatchers(mvcMatcherBuilder.pattern(HttpMethod.GET,"api/films")).permitAll()
             .requestMatchers(mvcMatcherBuilder.pattern(HttpMethod.POST, "api/theaters")).permitAll()
             .requestMatchers(mvcMatcherBuilder.pattern(HttpMethod.POST, "api/showings")).permitAll()
+
+            .requestMatchers(mvcMatcherBuilder.pattern(HttpMethod.GET, "api/theaters")).permitAll()
+            .requestMatchers(mvcMatcherBuilder.pattern(HttpMethod.GET, "api/showings")).permitAll()
+            .requestMatchers(mvcMatcherBuilder.pattern(HttpMethod.GET, "api/showings/{id}")).permitAll()
+            .requestMatchers(mvcMatcherBuilder.pattern(HttpMethod.GET, "api/showings/includeSeats")).permitAll()
+            .requestMatchers(mvcMatcherBuilder.pattern(HttpMethod.GET, "api/showings/{id}/includeSeats")).permitAll()
+            .requestMatchers(mvcMatcherBuilder.pattern(HttpMethod.GET, "api/showings/{id}/includeMovieDetails")).permitAll()
+            .requestMatchers(mvcMatcherBuilder.pattern(HttpMethod.GET, "api/showings/findAllByFilmId/{filmId}")).permitAll()
+
+
 
             //This is for demo purposes only, and should be removed for a real system
             //.requestMatchers(mvcMatcherBuilder.pattern(HttpMethod.GET, "/api/test/user-only")).hasAuthority("USER")

@@ -1,6 +1,9 @@
 package scrumbledore.kinoproject.project.showing.service;
 
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
+import org.springframework.web.server.ResponseStatusException;
+import scrumbledore.kinoproject.project.film.dto.FilmResponse;
 import scrumbledore.kinoproject.project.film.entity.Film;
 import scrumbledore.kinoproject.project.film.repository.FilmRepository;
 import scrumbledore.kinoproject.project.seat.entity.Seat;
@@ -11,6 +14,9 @@ import scrumbledore.kinoproject.project.showing.entity.Showing;
 import scrumbledore.kinoproject.project.showing.repository.ShowingRepository;
 import scrumbledore.kinoproject.project.theater.enity.Theater;
 import scrumbledore.kinoproject.project.theater.repository.TheaterRepository;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @Service
 public class ShowingService {
@@ -28,8 +34,7 @@ public class ShowingService {
         this.showingRepository = showingRepository;
         this.seatRepository = seatRepository;
     }
-
-    public ShowingResponse addShowing(AddShowingRequest addShowingRequest){
+    public ShowingResponse addShowing(AddShowingRequest addShowingRequest) {
         Showing showing = new Showing();
         showing = showingRepository.save(showing);
         int showingId = showing.getId();
@@ -47,7 +52,7 @@ public class ShowingService {
         showing.setTimeAndDate(addShowingRequest.getTimeAndDate());
         for (int i = 0; i < theater.getSeatCount(); i++) {
             Seat seat = new Seat();
-            seat.setSeatNumber(i+1);
+            seat.setSeatNumber(i + 1);
 
             seat.setShowingIdOnShowing(showingId);
 
@@ -56,7 +61,27 @@ public class ShowingService {
         }
 
         showingRepository.save(showing);
-        return new ShowingResponse(showing);
+        return new ShowingResponse(showing,true);
 //        LocalDateTime ldt = addShowingRequest.getTimeAndDate();
     }
+    public List<ShowingResponse> getAllShowings(boolean includeSeats){
+        List<Showing> showings = showingRepository.findAll();
+        List<ShowingResponse> showingResponses = showings.stream().map(showing -> new ShowingResponse(showing,includeSeats)).toList();
+        return showingResponses;
+
+    }
+    public ShowingResponse getShowingById(int id, boolean includeSeats){
+        Showing showing = showingRepository.findById(id)
+                .orElseThrow(()-> new ResponseStatusException(HttpStatus.BAD_REQUEST,"Showing with this ID does not exist"));
+        return new ShowingResponse(showing,includeSeats);
+    }
+
+    public List<ShowingResponse> getShowingsByFilm(int filmId){
+        Film film = filmRepository.findById(filmId).orElseThrow();
+        List<Showing> showings = showingRepository.findShowingsByFilm(film);
+        List<ShowingResponse> showingResponses = showings.stream().map(showing -> new ShowingResponse(showing,false)).toList();
+        return showingResponses;
+    }
+
 }
+
