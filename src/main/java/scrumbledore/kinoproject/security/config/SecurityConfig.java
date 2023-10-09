@@ -87,6 +87,8 @@ public class SecurityConfig {
             .requestMatchers(mvcMatcherBuilder.pattern(HttpMethod.GET, "api/showings/{id}/includeSeats")).permitAll()
             .requestMatchers(mvcMatcherBuilder.pattern(HttpMethod.GET, "api/showings/{id}/includeMovieDetails")).permitAll()
             .requestMatchers(mvcMatcherBuilder.pattern(HttpMethod.GET, "api/showings/findAllByFilmId/{filmId}")).permitAll()
+            .requestMatchers(mvcMatcherBuilder.pattern(HttpMethod.POST, "api/signUp")).permitAll()
+            .requestMatchers(mvcMatcherBuilder.pattern(HttpMethod.POST, "api/users")).permitAll()
 
             //This is for demo purposes only, and should be removed for a real system
             //.requestMatchers(mvcMatcherBuilder.pattern(HttpMethod.GET, "/api/test/user-only")).hasAuthority("USER")
