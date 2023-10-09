@@ -16,13 +16,17 @@ public class TheaterRequest {
 
     private List<Showing> showings;
 
+    private Integer rowLength;
+
     public static Theater getTheaterEntity(TheaterRequest theaterRequest) {
         return new Theater().builder()
                 .seatCount(theaterRequest.getSeatCount())
+                .rowLength(theaterRequest.getRowLength())
                 .build();
     }
 
     public TheaterRequest(Theater theater) {
         this.seatCount = theater.getSeatCount();
+        this.rowLength = theater.getRowLength();
     }
 }

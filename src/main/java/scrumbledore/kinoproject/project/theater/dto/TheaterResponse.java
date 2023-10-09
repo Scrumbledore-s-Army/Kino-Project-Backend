@@ -15,10 +15,13 @@ import java.util.List;
 public class TheaterResponse {
     private int id;
     private Integer seatCount;
+    private int rowLength;
 
     private List<Showing> showings = new ArrayList<>();
     public TheaterResponse(Theater theater) {
         this.id = theater.getId();
         this.seatCount = theater.getSeatCount();
-        this.showings = theater.getShowings();}
+        this.showings = theater.getShowings();
+        this.rowLength = theater.getRowLength();
+    }
 }
