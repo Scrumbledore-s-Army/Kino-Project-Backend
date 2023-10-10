@@ -11,6 +11,7 @@ import scrumbledore.kinoproject.project.reservation.repository.ReservationReposi
 import scrumbledore.kinoproject.project.seat.entity.Seat;
 import scrumbledore.kinoproject.project.seat.repository.SeatRepository;
 import scrumbledore.kinoproject.project.showing.repository.ShowingRepository;
+import scrumbledore.kinoproject.project.user.entity.User;
 import scrumbledore.kinoproject.project.user.repository.UserRepository;
 
 import java.util.ArrayList;
@@ -34,9 +35,6 @@ public class ReservationService {
         this.userRepository = userRepository;
         this.showingRepository = showingRepository;
     }
-
-
-
     public void addReservation(ReservationRequestAddById reservationRequest) {
         String username = reservationRequest.getUsername();
         int showingId = reservationRequest.getShowingId();
@@ -68,8 +66,8 @@ public class ReservationService {
 
     }
 
-
-    public List<ReservationResponse> getAllReservationsByUser(UserResponse user) {
+    public List<ReservationResponse> getAllReservationsByUser(String username) {
+        User user = userRepository.findById(username).orElseThrow();
         return reservationRepository.findReservationsByCustomer(user);
     }
 

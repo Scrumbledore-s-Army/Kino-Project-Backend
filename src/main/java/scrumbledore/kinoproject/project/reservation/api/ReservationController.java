@@ -30,10 +30,9 @@ public class ReservationController {
         this.userService = userService;
     }
 
-    @GetMapping("/reservations/{username}")
+    @GetMapping("/{username}")
     public List<ReservationResponse> getAllReservationsByUser(@PathVariable("username") String username) {
-        UserResponse user = userService.findById(username);
-        return reservationService.getAllReservationsByUser(user);
+        return reservationService.getAllReservationsByUser(username);
     }
 
     @PostMapping()
