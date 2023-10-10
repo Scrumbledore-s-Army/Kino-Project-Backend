@@ -14,6 +14,12 @@ import scrumbledore.kinoproject.project.showing.repository.ShowingRepository;
 import scrumbledore.kinoproject.project.user.repository.UserRepository;
 
 import java.util.ArrayList;
+import scrumbledore.kinoproject.project.reservation.dto.ReservationResponse;
+import scrumbledore.kinoproject.project.reservation.entity.Reservation;
+import scrumbledore.kinoproject.project.reservation.repository.ReservationRepository;
+import scrumbledore.kinoproject.project.user.dto.UserResponse;
+
+import java.util.List;
 
 @Service
 public class ReservationService {
@@ -62,5 +68,9 @@ public class ReservationService {
 
     }
 
+
+    public List<ReservationResponse> getAllReservationsByUser(UserResponse user) {
+        return reservationRepository.findReservationsByCustomer(user);
+    }
 
 }
