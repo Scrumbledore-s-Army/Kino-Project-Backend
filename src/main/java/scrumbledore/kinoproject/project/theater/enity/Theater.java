@@ -22,4 +22,5 @@ public class Theater {
 
     @OneToMany
     private List<Showing> showings;
+
 }
