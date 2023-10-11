@@ -1,5 +1,7 @@
 package scrumbledore.kinoproject.project.reservation.dto;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -14,7 +16,8 @@ import java.util.List;
 @Getter
 @Setter
 @NoArgsConstructor
-
+@AllArgsConstructor
+@JsonInclude(JsonInclude.Include.NON_NULL)
 public class ReservationResponse {
     private List<Seat> seats = new ArrayList<>();
     private Integer totalPrice;
@@ -25,5 +28,9 @@ public class ReservationResponse {
         this.totalPrice = reservation.getTotalPrice();
         this.customer = reservation.getCustomer();
         this.showing = reservation.getShowing();
+    }
+    public ReservationResponse(Reservation reservation) {
+        this.seats = reservation.getSeats();
+        this.totalPrice = reservation.getTotalPrice();
     }
 }
