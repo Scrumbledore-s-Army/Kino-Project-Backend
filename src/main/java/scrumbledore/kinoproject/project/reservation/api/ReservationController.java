@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 import scrumbledore.kinoproject.project.reservation.dto.ReservationRequestAddById;
-import scrumbledore.kinoproject.project.reservation.entity.Reservation;
+import scrumbledore.kinoproject.project.reservation.dto.ReservationResponse;
 import scrumbledore.kinoproject.project.reservation.service.ReservationService;
 import scrumbledore.kinoproject.project.user.service.UserService;
 
@@ -26,8 +26,8 @@ public class ReservationController {
     }
 
     @GetMapping("/{username}")
-    public List<Reservation> findReservationsByCustomerUsername(@PathVariable String username) {
-        List<Reservation> reservations = reservationService.findReservationsByCustomerUsername(username);
+    public List<ReservationResponse> findReservationsByCustomerUsername(@PathVariable String username) {
+        List<ReservationResponse> reservations = reservationService.findReservationsByCustomerUsername(username);
         return reservations;
     }
 
@@ -35,6 +35,4 @@ public class ReservationController {
     public void addReservation(@RequestBody ReservationRequestAddById body){
     reservationService.addReservation(body);
     }
-
-
 }

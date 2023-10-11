@@ -4,6 +4,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
 import scrumbledore.kinoproject.project.reservation.dto.ReservationRequestAddById;
+import scrumbledore.kinoproject.project.reservation.dto.ReservationResponse;
 import scrumbledore.kinoproject.project.reservation.entity.Reservation;
 import scrumbledore.kinoproject.project.reservation.repository.ReservationRepository;
 import scrumbledore.kinoproject.project.seat.entity.Seat;
@@ -63,14 +64,17 @@ public class ReservationService {
 
     }
 
-    public List<Reservation> findReservationsByCustomerUsername(String username) {
+    public List<ReservationResponse> findReservationsByCustomerUsername(String username) {
         Optional<User> userOptional = userRepository.findById(username);
 
         if (userOptional.isPresent()) {
             User user = userOptional.get();
-            List<Reservation> reservations = reservationRepository.findByCustomerUsername(user.getUsername());
+            List<Reservation> reservations = reservationRepository.findReservationsByCustomer_Username(user.getUsername());
+            List<ReservationResponse> reservationResponses = reservations.stream()
+                    .map(ReservationResponse::new)
+                    .toList();
 
-            return reservations;
+            return reservationResponses;
         } else {
             return Collections.emptyList();
         }

@@ -6,8 +6,8 @@ import scrumbledore.kinoproject.project.seat.entity.Seat;
 import scrumbledore.kinoproject.project.showing.entity.Showing;
 import scrumbledore.kinoproject.project.user.entity.User;
 
+import java.util.ArrayList;
 import java.util.List;
-import java.util.concurrent.atomic.AtomicInteger;
 
 @Entity
 @Getter
@@ -20,7 +20,7 @@ public class Reservation {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     @OneToMany
-    private List<Seat> seats;
+    private List<Seat> seats = new ArrayList<>();
     private Integer totalPrice;
     @ManyToOne
     private User customer;
