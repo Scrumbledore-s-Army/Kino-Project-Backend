@@ -29,6 +29,7 @@ public class ReservationController {
     public List<ReservationResponse> findReservationsByCustomerUsername(@PathVariable String username) {
         List<ReservationResponse> reservations = reservationService.findReservationsByCustomerUsername(username);
         return reservations;
+
     }
 
     @PostMapping()

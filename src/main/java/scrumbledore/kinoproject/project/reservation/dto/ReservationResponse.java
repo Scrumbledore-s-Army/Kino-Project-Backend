@@ -23,11 +23,11 @@ public class ReservationResponse {
     private Integer totalPrice;
     private User customer;
     private Showing showing;
-    public ReservationResponse(ReservationRequest reservationRequest) {
-        this.seats = reservationRequest.getSeats();
-        this.totalPrice = reservationRequest.getTotalPrice();
-        this.customer = reservationRequest.getCustomer();
-        this.showing = reservationRequest.getShowing();
+    public ReservationResponse(Reservation reservation) {
+        this.seats = reservation.getSeats();
+        this.totalPrice = reservation.getTotalPrice();
+        this.customer = reservation.getCustomer();
+        this.showing = reservation.getShowing();
     }
     public ReservationResponse(Reservation reservation) {
         this.seats = reservation.getSeats();
