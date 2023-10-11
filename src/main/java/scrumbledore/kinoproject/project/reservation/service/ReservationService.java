@@ -1,25 +1,22 @@
 package scrumbledore.kinoproject.project.reservation.service;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
-import scrumbledore.kinoproject.project.reservation.dto.ReservationRequest;
 import scrumbledore.kinoproject.project.reservation.dto.ReservationRequestAddById;
 import scrumbledore.kinoproject.project.reservation.entity.Reservation;
 import scrumbledore.kinoproject.project.reservation.repository.ReservationRepository;
 import scrumbledore.kinoproject.project.seat.entity.Seat;
 import scrumbledore.kinoproject.project.seat.repository.SeatRepository;
 import scrumbledore.kinoproject.project.showing.repository.ShowingRepository;
+import scrumbledore.kinoproject.project.user.entity.User;
 import scrumbledore.kinoproject.project.user.repository.UserRepository;
 
 import java.util.ArrayList;
-import scrumbledore.kinoproject.project.reservation.dto.ReservationResponse;
-import scrumbledore.kinoproject.project.reservation.entity.Reservation;
-import scrumbledore.kinoproject.project.reservation.repository.ReservationRepository;
-import scrumbledore.kinoproject.project.user.dto.UserResponse;
 
+import java.util.Collections;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class ReservationService {
@@ -34,8 +31,6 @@ public class ReservationService {
         this.userRepository = userRepository;
         this.showingRepository = showingRepository;
     }
-
-
 
     public void addReservation(ReservationRequestAddById reservationRequest) {
         String username = reservationRequest.getUsername();
@@ -68,9 +63,16 @@ public class ReservationService {
 
     }
 
+    public List<Reservation> findReservationsByCustomerUsername(String username) {
+        Optional<User> userOptional = userRepository.findById(username);
 
-    public List<ReservationResponse> getAllReservationsByUser(UserResponse user) {
-        return reservationRepository.findReservationsByCustomer(user);
+        if (userOptional.isPresent()) {
+            User user = userOptional.get();
+            List<Reservation> reservations = reservationRepository.findByCustomerUsername(user.getUsername());
+
+            return reservations;
+        } else {
+            return Collections.emptyList();
+        }
     }
-
 }
