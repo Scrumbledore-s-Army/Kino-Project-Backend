@@ -19,8 +19,7 @@ public class Seat {
 
     private Integer seatNumber;
 
-    @ManyToOne
-    private Reservation reservation;
+    private Boolean isReserved;
 
     Integer showingIdOnShowing;
 }

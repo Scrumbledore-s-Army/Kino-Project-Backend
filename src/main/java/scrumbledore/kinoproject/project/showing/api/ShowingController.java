@@ -29,12 +29,10 @@ public class ShowingController {
         return showingService.getAllShowings(false);
     }
 
-
     @GetMapping("/includeSeats")
     public List<ShowingResponse> showingResponseListIncludeSeats(){
         return showingService.getAllShowings(true);
     }
-
 
     @GetMapping("/{id}")
     public ShowingResponse showingResponse(@PathVariable int id){
