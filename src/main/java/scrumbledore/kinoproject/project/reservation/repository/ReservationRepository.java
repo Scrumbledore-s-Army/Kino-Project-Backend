@@ -3,6 +3,8 @@ package scrumbledore.kinoproject.project.reservation.repository;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 import scrumbledore.kinoproject.project.reservation.entity.Reservation;
+import scrumbledore.kinoproject.project.user.dto.UserResponse;
+import scrumbledore.kinoproject.project.user.entity.User;
 
 import java.util.List;
 
