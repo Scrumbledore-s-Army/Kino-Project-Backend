@@ -55,7 +55,7 @@ class FilmServiceTest {
 
     @BeforeEach
     void setUp() {
-        MockitoAnnotations.initMocks(this);
+
     }
 
     @Test
