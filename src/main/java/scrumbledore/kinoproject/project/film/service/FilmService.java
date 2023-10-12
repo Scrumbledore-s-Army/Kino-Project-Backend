@@ -27,7 +27,8 @@ public class FilmService {
     @Autowired
     OmdbFacade omdbFacade;
 
-    public FilmService(FilmRepository filmRepository) {
+    public FilmService(FilmRepository filmRepository, OmdbFacade omdbFacade) {
+        this.omdbFacade = omdbFacade;
         this.filmRepository = filmRepository;
     }
     public FilmResponse getFilmById(int id){
