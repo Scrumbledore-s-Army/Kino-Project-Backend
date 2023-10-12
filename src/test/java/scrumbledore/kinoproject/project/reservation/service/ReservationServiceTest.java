@@ -9,6 +9,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.web.server.ResponseStatusException;
 import scrumbledore.kinoproject.project.reservation.dto.ReservationRequestAddById;
+import scrumbledore.kinoproject.project.reservation.entity.Reservation;
 import scrumbledore.kinoproject.project.reservation.repository.ReservationRepository;
 import scrumbledore.kinoproject.project.seat.entity.Seat;
 import scrumbledore.kinoproject.project.seat.repository.SeatRepository;
@@ -74,10 +75,8 @@ class ReservationServiceTest {
         when(seatRepository.findById(2)).thenReturn(Optional.of(seat2));
         when(seatRepository.findById(3)).thenReturn(Optional.of(seat3));
 
-        // Mock the saveAll() method to return a list of Seat objects when it is called
         when(seatRepository.saveAll(anyList())).thenAnswer(invocation -> {
             List<Seat> seats = invocation.getArgument(0);
-            // Simulate saving the seats
             for (Seat seat : seats) {
                 int i = seats.indexOf(seat);
                 seat.setId(i);
@@ -111,7 +110,6 @@ class ReservationServiceTest {
 
     @Test
     void addReservationThrowResponseStatusException() {
-        // Arrange
         ReservationRequestAddById reservationRequest = new ReservationRequestAddById();
         reservationRequest.setUsername("testUser");
         reservationRequest.setShowingId(1);
@@ -126,9 +124,51 @@ class ReservationServiceTest {
         when(seatRepository.findById(1)).thenReturn(Optional.of(seat1));
         when(seatRepository.findById(999)).thenReturn(Optional.empty());
 
-        // Act and Assert
         assertThrows(ResponseStatusException.class, () -> {
             reservationService.addReservation(reservationRequest);
         });
     }
+
+    @Test
+    void findReservationsByCustomerUsername() {
+        String username = "testUser";
+        User user = new User("testUser", "password", "test@test.dk");
+
+        Seat seat1 = new Seat();
+        Seat seat2 = new Seat();
+        Seat seat3 = new Seat();
+        Showing showing = new Showing();
+        Reservation reservation = new Reservation();
+        reservation.setCustomer(user);
+        reservation.setShowing(showing);
+
+        ReservationRequestAddById reservationRequest = new ReservationRequestAddById();
+        reservationRequest.setUsername("testUser");
+        reservationRequest.setShowingId(1);
+        reservationRequest.setSeatIds(new Integer[]{1, 2, 3});
+
+        when(userRepository.findById("testUser")).thenReturn(Optional.of(user));
+        when(showingRepository.findById(1)).thenReturn(Optional.of(showing));
+        when(seatRepository.findById(1)).thenReturn(Optional.of(seat1));
+        when(seatRepository.findById(2)).thenReturn(Optional.of(seat2));
+        when(seatRepository.findById(3)).thenReturn(Optional.of(seat3));
+
+        when(seatRepository.saveAll(anyList())).thenAnswer(invocation -> {
+            List<Seat> seats = invocation.getArgument(0);
+            for (Seat seat : seats) {
+                int i = seats.indexOf(seat);
+                seat.setId(i);
+            }
+            return seats;
+        });
+
+        reservationService.addReservation(reservationRequest);
+
+        ArgumentCaptor<List<Seat>> seatCaptor = ArgumentCaptor.forClass(List.class);
+        verify(seatRepository).saveAll(seatCaptor.capture());
+
+        List<Seat> savedSeats = seatCaptor.getValue();
+        assertEquals(3, savedSeats.size());
+    }
+
 }
