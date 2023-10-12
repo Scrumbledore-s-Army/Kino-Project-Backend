@@ -33,7 +33,7 @@ public class ReservationService {
         this.showingRepository = showingRepository;
     }
 
-    public void addReservation(ReservationRequestAddById reservationRequest) {
+    public int addReservation(ReservationRequestAddById reservationRequest) {
         String username = reservationRequest.getUsername();
         int showingId = reservationRequest.getShowingId();
         Integer[] seatIds = reservationRequest.getSeatIds();
@@ -62,6 +62,7 @@ public class ReservationService {
 
        seatRepository.saveAll(seatsArrayList);
 
+       return reservation.getId();
     }
 
     public List<ReservationResponse> findReservationsByCustomerUsername(String username) {
@@ -79,5 +80,9 @@ public class ReservationService {
         } else {
             return Collections.emptyList();
         }
+    }
+    public ReservationResponse getReservationById(int reservationId){
+        ReservationResponse reservation =  new ReservationResponse(reservationRepository.findById(reservationId).orElseThrow());
+        return reservation;
     }
 }
