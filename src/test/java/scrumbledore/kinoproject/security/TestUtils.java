@@ -12,6 +12,9 @@ public class TestUtils {
     public static String h2UsernameValue = "JDBC_DATABASE_USERNAME";
     public static String h2PassName = "JDBC_DATABASE_DRIVER";
     public static String h2PassValue = "test";
+    public static String tokenSecretName = "TOKEN_SECRET";
+    public static String tokenSecretValue = "s/4KMb61LOrMYYAn4rfaQYSgr+le5SMrsMzKw8G6bXx=";
+
 
     public static void setupTestUsers(UserWithRolesRepository userWithRolesRepository) {
         userWithRolesRepository.deleteAll();

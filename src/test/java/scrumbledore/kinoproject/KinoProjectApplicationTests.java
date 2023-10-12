@@ -14,6 +14,7 @@ class KinoProjectApplicationTests {
         System.setProperty(TestUtils.h2UrlName, TestUtils.h2UrlValue);
         System.setProperty(TestUtils.h2UsernameName, TestUtils.h2UsernameValue);
         System.setProperty(TestUtils.h2PassName, TestUtils.h2PassValue);
+        System.setProperty(TestUtils.tokenSecretName, TestUtils.tokenSecretValue);
     }
 
     @AfterAll
@@ -21,6 +22,7 @@ class KinoProjectApplicationTests {
         System.clearProperty(TestUtils.h2UrlName);
         System.clearProperty(TestUtils.h2UsernameName);
         System.clearProperty(TestUtils.h2PassName);
+        System.clearProperty(TestUtils.tokenSecretName);
     }
 
     @Test
