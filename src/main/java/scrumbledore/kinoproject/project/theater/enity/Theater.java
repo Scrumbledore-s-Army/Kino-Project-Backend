@@ -18,7 +18,9 @@ public class Theater {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     private Integer seatCount;
+    private int rowLength;
 
     @OneToMany
     private List<Showing> showings;
+
 }

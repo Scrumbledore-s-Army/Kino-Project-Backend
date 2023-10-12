@@ -13,9 +13,7 @@ import scrumbledore.kinoproject.project.showing.entity.Showing;
 public class SeatRequest {
     private Showing showing;
     private Integer seatNumber;
-    private Reservation reservation;
     public SeatRequest(Seat seat) {
         this.seatNumber = seat.getSeatNumber();
-        this.reservation = seat.getReservation();
     }
 }

@@ -18,11 +18,12 @@ public class SeatResponse {
     private Integer seatNumber;
     private Reservation reservation;
     private int showingIdOnShowing;
+    private Boolean isReserved;
 
     public SeatResponse(Seat seat) {
         this.id = seat.getId();
         this.seatNumber = seat.getSeatNumber();
-        this.reservation = seat.getReservation();
         this.showingIdOnShowing = seat.getShowingIdOnShowing();
+        this.isReserved = seat.getIsReserved();
     }
 }
