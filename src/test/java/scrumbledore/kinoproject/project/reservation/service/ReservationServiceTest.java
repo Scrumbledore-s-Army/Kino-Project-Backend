@@ -2,6 +2,7 @@ package scrumbledore.kinoproject.project.reservation.service;
 
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.ArgumentCaptor;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -56,6 +57,11 @@ class ReservationServiceTest {
         System.clearProperty(TestUtils.h2PassName);
     }
 
+    @BeforeEach
+    void setUp() {
+        reservationService = new ReservationService(reservationRepository, seatRepository, userRepository, showingRepository);
+    }
+
     @Test
     void addReservationShouldAddReservation() {
         ReservationRequestAddById reservationRequest = new ReservationRequestAddById();
@@ -85,6 +91,12 @@ class ReservationServiceTest {
         });
 
         ArgumentCaptor<List<Seat>> seatCaptor = ArgumentCaptor.forClass(List.class);
+
+        when(reservationRepository.save(any(Reservation.class))).thenAnswer(invocation -> {
+            Reservation reservation = invocation.getArgument(0);
+            reservation.setId(1);
+            return reservation;
+        });
 
         reservationService.addReservation(reservationRequest);
 
@@ -129,7 +141,7 @@ class ReservationServiceTest {
         });
     }
 
-    @Test
+   @Test
     void findReservationsByCustomerUsername() {
         String username = "testUser";
         User user = new User("testUser", "password", "test@test.dk");
@@ -141,6 +153,7 @@ class ReservationServiceTest {
         Reservation reservation = new Reservation();
         reservation.setCustomer(user);
         reservation.setShowing(showing);
+        reservation.setId(1);
 
         ReservationRequestAddById reservationRequest = new ReservationRequestAddById();
         reservationRequest.setUsername("testUser");
@@ -161,6 +174,8 @@ class ReservationServiceTest {
             }
             return seats;
         });
+
+        when(reservationRepository.save(any(Reservation.class))).thenReturn(reservation);
 
         reservationService.addReservation(reservationRequest);
 
