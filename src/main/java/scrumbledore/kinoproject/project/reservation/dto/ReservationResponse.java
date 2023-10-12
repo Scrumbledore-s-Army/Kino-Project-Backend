@@ -28,6 +28,9 @@ public class ReservationResponse {
     private String customerUsername;
     private int theaterId;
     private String showingDate;
+    private String title;
+    private int reservationId;
+    private int showingId;
 
     public ReservationResponse(Reservation reservation) {
         this.seats              = reservation.getSeats();
@@ -36,5 +39,8 @@ public class ReservationResponse {
         this.customerUsername   = reservation.getCustomer().getUsername();
         this.theaterId          = reservation.getShowing().getTheater().getId();
         this.showingDate        = reservation.getShowing().getTimeAndDate().toString();
+        this.title              = reservation.getShowing().getFilm().getTitle();
+        this.reservationId      = reservation.getId();
+        this.showingId          = reservation.getShowing().getId();
     }
 }

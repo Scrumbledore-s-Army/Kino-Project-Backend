@@ -33,7 +33,12 @@ public class ReservationController {
     }
 
     @PostMapping()
-    public void addReservation(@RequestBody ReservationRequestAddById body){
-    reservationService.addReservation(body);
+    public int addReservation(@RequestBody ReservationRequestAddById body){
+    return reservationService.addReservation(body);
+    }
+    @GetMapping("/id/{id}")
+    public ReservationResponse getReservationById(@PathVariable int id){
+        ReservationResponse reservationResponse = reservationService.getReservationById(id);
+        return reservationResponse;
     }
 }
