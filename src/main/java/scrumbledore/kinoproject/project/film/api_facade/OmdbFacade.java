@@ -13,7 +13,7 @@ public class OmdbFacade {
         restTemplate = new RestTemplate();
     }
 
-    @Value("${OMDB_KEY:6dfe795d}")
+    @Value("${app.omdb-key}")
     String API_KEY ;
 
     String OMDB_URL = "http://www.omdbapi.com";

@@ -6,6 +6,7 @@ package scrumbledore.kinoproject.project.film.api;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
+import scrumbledore.kinoproject.project.film.dto.FilmOmdbResponse;
 import scrumbledore.kinoproject.project.film.dto.FilmResponse;
 import scrumbledore.kinoproject.project.film.entity.Film;
 import scrumbledore.kinoproject.project.film.service.FilmService;
@@ -37,6 +38,11 @@ public class FilmController {
     @PostMapping("/{imdbId}")
     public Film addfilm(@PathVariable String imdbId) throws JsonProcessingException {
         return filmService.addFilm(imdbId);
+    }
+
+    @GetMapping("/inspectFilm/{imdbId}")
+    public FilmOmdbResponse inspectFilm(@PathVariable String imdbId) throws JsonProcessingException {
+        return filmService.inspectFilm(imdbId);
     }
 
 

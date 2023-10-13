@@ -81,4 +81,8 @@ public class FilmService {
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Could not add movie");
         }
     }
+
+    public FilmOmdbResponse inspectFilm(String imdbId) throws JsonProcessingException {
+        return omdbFacade.getFilm(imdbId);
+    }
 }
