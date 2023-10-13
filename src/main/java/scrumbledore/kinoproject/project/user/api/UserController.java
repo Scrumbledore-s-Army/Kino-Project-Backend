@@ -1,5 +1,6 @@
 package scrumbledore.kinoproject.project.user.api;
 
+import org.springframework.http.MediaType;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 import scrumbledore.kinoproject.project.user.dto.UserRequest;
@@ -26,38 +27,29 @@ class UserController {
         return userService.getUsers();
     }
 
-    @GetMapping("/includeAll")
-    List<UserResponse> getUsersIncludeAll() {
-        return userService.getUsers();
-    }
-
 
     //Admin
+    @PreAuthorize("hasAuthority('ADMIN')")
     @GetMapping(path = "/{username}")
     UserResponse getUserById(@PathVariable String username) throws Exception {
         return userService.findById(username);
     }
 
-    @GetMapping(path = "/{username}/includeAll")
-    UserResponse getUserByIdIncludeAll(@PathVariable String username) throws Exception {
-        return userService.findById(username);
-    }
-
     //Security --> Anonymous
-
-    @PreAuthorize("permitAll()")
-    @PostMapping()
+    @PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
     UserResponse addUser(@RequestBody UserRequest body) {
         return userService.addUser(body);
     }
 
     //Security --> Admin
+    @PreAuthorize("hasAuthority('ADMIN')")
     @PutMapping("/{username}")
     void editUser(@RequestBody UserRequest body, @PathVariable String username) {
         userService.editUser(body, username);
     }
 
-    // Security --> Admin
+    // Security --> ADMIN
+    @PreAuthorize("hasAuthority('ADMIN')")
     @DeleteMapping("/{username}")
     void deleteUserByUsername(@PathVariable String username) {
         userService.deleteById(username);

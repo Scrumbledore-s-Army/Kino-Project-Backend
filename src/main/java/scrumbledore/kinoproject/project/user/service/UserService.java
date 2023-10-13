@@ -42,9 +42,8 @@ public class UserService {
         if (userRepository.existsById(body.getUsername())) {
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "This user already exists");
         }
-        newUser = userRepository.save(newUser);
-
         newUser.addRole(Role.USER);
+        newUser = userRepository.save(newUser);
         return new UserResponse(newUser);
     }
 
@@ -56,11 +55,6 @@ public class UserService {
         user.setUsername(body.getUsername());
         user.setPassword(body.getPassword());
         user.setEmail(body.getEmail());
-        user.setFirstName(body.getFirstName());
-        user.setLastName(body.getLastName());
-        user.setStreet(body.getStreet());
-        user.setCity(body.getCity());
-        user.setZip(body.getZip());
         userRepository.save(user);
     }
 
