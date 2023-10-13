@@ -1,6 +1,8 @@
 package scrumbledore.kinoproject.project.reservation.service;
 
 import org.springframework.http.HttpStatus;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
 import scrumbledore.kinoproject.project.reservation.dto.ReservationRequestAddById;
@@ -34,7 +36,9 @@ public class ReservationService {
     }
 
     public int addReservation(ReservationRequestAddById reservationRequest) {
-        String username = reservationRequest.getUsername();
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        String username = authentication.getName();
+
         int showingId = reservationRequest.getShowingId();
         Integer[] seatIds = reservationRequest.getSeatIds();
 
@@ -65,7 +69,10 @@ public class ReservationService {
        return reservation.getId();
     }
 
-    public List<ReservationResponse> findReservationsByCustomerUsername(String username) {
+    public List<ReservationResponse> findReservationsByCustomerUsername() {
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        String username = authentication.getName();
+
         Optional<User> userOptional = userRepository.findById(username);
 
         if (userOptional.isPresent()) {

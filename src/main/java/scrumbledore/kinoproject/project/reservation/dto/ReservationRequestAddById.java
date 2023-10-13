@@ -9,7 +9,6 @@ import lombok.*;
 @AllArgsConstructor
 @Builder
 public class ReservationRequestAddById {
- private String username;
  private Integer showingId;
  private Integer[] seatIds;
 }

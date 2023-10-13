@@ -25,20 +25,19 @@ public class ReservationController {
         this.userService = userService;
     }
 
-    @GetMapping("/{username}")
-    public List<ReservationResponse> findReservationsByCustomerUsername(@PathVariable String username) {
-        List<ReservationResponse> reservations = reservationService.findReservationsByCustomerUsername(username);
-        return reservations;
+    @GetMapping()
+    public List<ReservationResponse> findReservationsByCustomerUsername() {
+        return reservationService.findReservationsByCustomerUsername();
 
     }
 
     @PostMapping()
-    public int addReservation(@RequestBody ReservationRequestAddById body){
-    return reservationService.addReservation(body);
+    public int addReservation(@RequestBody ReservationRequestAddById body) {
+        return reservationService.addReservation(body);
     }
+
     @GetMapping("/id/{id}")
-    public ReservationResponse getReservationById(@PathVariable int id){
-        ReservationResponse reservationResponse = reservationService.getReservationById(id);
-        return reservationResponse;
+    public ReservationResponse getReservationById(@PathVariable int id) {
+        return reservationService.getReservationById(id);
     }
 }
