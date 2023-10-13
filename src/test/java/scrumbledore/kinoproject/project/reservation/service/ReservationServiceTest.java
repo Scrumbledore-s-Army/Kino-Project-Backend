@@ -67,7 +67,6 @@ class ReservationServiceTest {
     @Test
     void addReservationShouldAddReservation() {
         ReservationRequestAddById reservationRequest = new ReservationRequestAddById();
-        reservationRequest.setUsername("testUser");
         reservationRequest.setShowingId(1);
         reservationRequest.setSeatIds(new Integer[]{1, 2, 3});
 
@@ -111,7 +110,6 @@ class ReservationServiceTest {
     @Test
     void addReservationShouldThrowResponseStatusException() {
         ReservationRequestAddById reservationRequest = new ReservationRequestAddById();
-        reservationRequest.setUsername("nonExistentUser");
         reservationRequest.setShowingId(1);
         reservationRequest.setSeatIds(new Integer[]{1, 2, 3});
 
@@ -125,7 +123,6 @@ class ReservationServiceTest {
     @Test
     void addReservationThrowResponseStatusException() {
         ReservationRequestAddById reservationRequest = new ReservationRequestAddById();
-        reservationRequest.setUsername("testUser");
         reservationRequest.setShowingId(1);
         reservationRequest.setSeatIds(new Integer[]{1, 999});
 
@@ -145,7 +142,6 @@ class ReservationServiceTest {
 
    @Test
     void findReservationsByCustomerUsername() {
-        String username = "testUser";
         User user = new User("testUser", "password", "test@test.dk");
 
         Seat seat1 = new Seat();
@@ -158,7 +154,6 @@ class ReservationServiceTest {
         reservation.setId(1);
 
         ReservationRequestAddById reservationRequest = new ReservationRequestAddById();
-        reservationRequest.setUsername("testUser");
         reservationRequest.setShowingId(1);
         reservationRequest.setSeatIds(new Integer[]{1, 2, 3});
 
