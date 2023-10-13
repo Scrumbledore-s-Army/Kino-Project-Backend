@@ -31,15 +31,22 @@ public class FilmController {
         return filmService.getFilmById(id);
     }
 
+
     @RequestMapping("/imdbid/{imdbId}")
     public Film getFilm(@PathVariable String imdbId) {
         return filmService.getFilmByImdbId(imdbId);
     }
-    @PostMapping("/{imdbId}")
+
+
+    @PreAuthorize("hasAuthority('ADMIN')")
+    @PostMapping(path ="/{imdbId}")
     public Film addfilm(@PathVariable String imdbId) throws JsonProcessingException {
         return filmService.addFilm(imdbId);
     }
 
+
+
+    @PreAuthorize("hasAuthority('ADMIN')")
     @GetMapping("/inspectFilm/{imdbId}")
     public FilmOmdbResponse inspectFilm(@PathVariable String imdbId) throws JsonProcessingException {
         return filmService.inspectFilm(imdbId);
