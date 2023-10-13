@@ -22,7 +22,6 @@ import java.util.List;
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class ReservationResponse {
     private List<Seat> seats = new ArrayList<>();
-
     private Double totalPrice;
     private String customerEmail;
     private String customerUsername;
