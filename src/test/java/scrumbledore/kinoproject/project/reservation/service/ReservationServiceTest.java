@@ -8,6 +8,7 @@ import org.mockito.ArgumentCaptor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
+import org.springframework.security.test.context.support.WithMockUser;
 import org.springframework.web.server.ResponseStatusException;
 import scrumbledore.kinoproject.project.reservation.dto.ReservationRequestAddById;
 import scrumbledore.kinoproject.project.reservation.entity.Reservation;
@@ -65,6 +66,7 @@ class ReservationServiceTest {
     }
 
     @Test
+    @WithMockUser(username = "testUser", password = "password", roles = "USER")
     void addReservationShouldAddReservation() {
         ReservationRequestAddById reservationRequest = new ReservationRequestAddById();
         reservationRequest.setShowingId(1);
@@ -108,6 +110,7 @@ class ReservationServiceTest {
     }
 
     @Test
+    @WithMockUser(username = "testUser", password = "password", roles = "USER")
     void addReservationShouldThrowResponseStatusException() {
         ReservationRequestAddById reservationRequest = new ReservationRequestAddById();
         reservationRequest.setShowingId(1);
@@ -121,6 +124,7 @@ class ReservationServiceTest {
     }
 
     @Test
+    @WithMockUser(username = "testUser", password = "password", roles = "USER")
     void addReservationThrowResponseStatusException() {
         ReservationRequestAddById reservationRequest = new ReservationRequestAddById();
         reservationRequest.setShowingId(1);
@@ -141,7 +145,8 @@ class ReservationServiceTest {
     }
 
    @Test
-    void findReservationsByCustomerUsername() {
+   @WithMockUser(username = "testUser", password = "password", roles = "USER")
+   void findReservationsByCustomerUsername() {
         User user = new User("testUser", "password", "test@test.dk");
 
         Seat seat1 = new Seat();
