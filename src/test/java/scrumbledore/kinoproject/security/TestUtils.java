@@ -14,6 +14,8 @@ public class TestUtils {
     public static String h2PassValue = "test";
     public static String tokenSecretName = "TOKEN_SECRET";
     public static String tokenSecretValue = "s/4KMb61LOrMYYAn4rfaQYSgr+le5SMrsMzKw8G6bXx=";
+    public static String omdbKeyName = "OMDB_KEY";
+    public static String omdbKeyValue = "6dfe795d";
 
 
     public static void setupTestUsers(UserWithRolesRepository userWithRolesRepository) {

@@ -15,6 +15,7 @@ class KinoProjectApplicationTests {
         System.setProperty(TestUtils.h2UsernameName, TestUtils.h2UsernameValue);
         System.setProperty(TestUtils.h2PassName, TestUtils.h2PassValue);
         System.setProperty(TestUtils.tokenSecretName, TestUtils.tokenSecretValue);
+        System.setProperty(TestUtils.omdbKeyName, TestUtils.omdbKeyValue);
     }
 
     @AfterAll
@@ -23,6 +24,7 @@ class KinoProjectApplicationTests {
         System.clearProperty(TestUtils.h2UsernameName);
         System.clearProperty(TestUtils.h2PassName);
         System.clearProperty(TestUtils.tokenSecretName);
+        System.clearProperty(TestUtils.omdbKeyName);
     }
 
     @Test
